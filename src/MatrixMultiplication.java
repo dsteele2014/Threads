@@ -13,13 +13,6 @@ public class MatrixMultiplication implements Runnable{
         this.C=C;
     }
     public void run(){
-        int ARowLength = this.A[0].length;
-        int BColLength = this.B.length;
-
-        if(ARowLength==BColLength){
-
-        }else{
-            System.out.println("These matrices cannot be multiplied.");
-        }
+        
     }
 }
