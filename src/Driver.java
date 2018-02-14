@@ -8,11 +8,10 @@ public class Driver{
                 int [][] matrix1= input.fillMatrix();
                 int [][] matrix2= input.fillMatrix();
                 int [][] matrix3= new int[matrix1[0].length][matrix2.length];
-                WorkerThread [][] Threads
                 final int NUM_THREADS = (matrix1[0].length*matrix2.length);
                 Thread[] workers = new Thread[NUM_THREADS];
                 for(int i =0; i<=NUM_THREADS; i++){
-                    workers[i] =  MatrixMultiplication(1,2,matrix1,matrix2,matrix3);
+                    workers[i] =  WorkerThread(1,2,matrix1,matrix2,matrix3);
                 }
                 for(int i = 0; i<NUM_THREADS; i++)
                 try {
