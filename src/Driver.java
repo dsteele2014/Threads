@@ -8,15 +8,21 @@ public class Driver{
                 int [][] matrix1= input.fillMatrix();
                 int [][] matrix2= input.fillMatrix();
                 int [][] matrix3= new int[matrix1[0].length][matrix2.length];
+
                 final int NUM_THREADS = (matrix1[0].length*matrix2.length);
-                Thread[] workers = new Thread[NUM_THREADS];
+                Thread[] myThreads;
+                myThreads = new Thread[NUM_THREADS];
+
                 for(int i =0; i<=NUM_THREADS; i++){
-                    workers[i] =  WorkerThread(1,2,matrix1,matrix2,matrix3);
+                    WorkerThread wt = new WorkerThread();
+                    myThreads[i] = new Thread(wt);
+                    myThreads[i].start();
                 }
-                for(int i = 0; i<NUM_THREADS; i++)
-                try {
-                    workers[i].join();
-                } catch (InterruptedException e) {}
+                for(int i = 0; i<NUM_THREADS; i++){
+                    try {
+                        myThreads[i].join();
+                    } catch (InterruptedException e) {}
+                }
             }
         }
 
