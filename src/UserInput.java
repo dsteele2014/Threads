@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class
-UserInput{
+public class UserInput{
 
     public int[][] fillMatrix(){
         Scanner scanner = new Scanner(System.in);
@@ -12,16 +11,21 @@ UserInput{
         int [][] matrix = new int[colLength][rowLength];
         for(int j = 0; j<colLength; j++) {
             for (int i = 0; i < rowLength; i++) {
+                int row = j+1;
                 int input;
-                if (i == 0) {
-                    System.out.println("Enter the first number in row " + j+1 + ":");
-                    input = Integer.parseInt(scanner.nextLine());
-                }else{
-                    System.out.println("Enter the next number in row "+j+1+":");
-                    input = Integer.parseInt(scanner.nextLine());
-                }
+                System.out.println("Enter the number at [" + j + ", "+i+"]:");
+                input = Integer.parseInt(scanner.nextLine());
+
                 matrix[j][i]=input;
             }
+        }
+        System.out.println("The matrix you input is:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+            System.out.println();
         }
         return matrix;
     }
