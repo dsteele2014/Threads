@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class UserInput{
+public class
+UserInput{
 
     public int[][] fillMatrix(){
         Scanner scanner = new Scanner(System.in);

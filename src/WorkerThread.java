@@ -13,6 +13,8 @@ public class WorkerThread implements Runnable{
         this.C=C;
     }
     public void run(){
-        
+        for (int i = 0; i<B.length; i++){
+                C[row][col] += (A[row][i]*B[i][col]);
+        }
     }
 }
