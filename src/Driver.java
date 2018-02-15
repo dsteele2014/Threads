@@ -1,3 +1,8 @@
+/*Rebecca Lawrence and Darcy Steele
+* CS376 Section 1
+* Project 1: Threads
+* 2/15/2018*/
+
 public class Driver{
     public static void main(String[]args) {
 
@@ -20,6 +25,7 @@ public class Driver{
                 try {
                     myThreads[i].join();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             System.out.println("The result of multiplying the matrices is: ");
@@ -30,7 +36,7 @@ public class Driver{
                 System.out.println();
             }
         }else{
-            System.out.println("The matrices you have entered are not multipliable");
+            System.out.println("The matrices you have entered cannot be multiplied");
         }
     }
 }

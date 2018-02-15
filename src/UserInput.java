@@ -1,22 +1,30 @@
 import java.util.Scanner;
 
 public class UserInput{
+    Scanner scanner = new Scanner(System.in);
+    String regex = "\\d+";
 
     public int[][] fillMatrix(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the height of the Matrix:");
-        int colLength = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the length of the Matrix:");
-        int rowLength = Integer.parseInt(scanner.nextLine());
-        int [][] matrix = new int[colLength][rowLength];
-        for(int j = 0; j<colLength; j++) {
-            for (int i = 0; i < rowLength; i++) {
-                int row = j+1;
-                int input;
-                System.out.println("Enter the number at [" + j + ", "+i+"]:");
-                input = Integer.parseInt(scanner.nextLine());
+        String colLength = inputHeight("Enter the height of the Matrix:");
+        while(!colLength.matches(regex)){
+            System.out.println("Invalid input.");
+            colLength = inputHeight("Enter the height of the Matrix:");
+        }
+        String rowLength = inputHeight("Enter the length of the Matrix:");
+        while(!rowLength.matches(regex)){
+            System.out.println("Invalid input.");
+            rowLength = inputHeight("Enter the length of the Matrix:");
+        }
 
-                matrix[j][i]=input;
+        int [][] matrix = new int[Integer.parseInt(colLength)][Integer.parseInt(rowLength)];
+        for(int j = 0; j<Integer.parseInt(colLength); j++) {
+            for (int i = 0; i < Integer.parseInt(rowLength); i++) {
+                String input = inputHeight("Enter the number at [" + j + ", "+i+"]:");
+                while(!input.matches(regex)){
+                    System.out.println("Invalid input.");
+                    input = inputHeight("Enter the number at [" + j + ", "+i+"]:");
+                }
+                matrix[j][i]=Integer.parseInt(input);
             }
         }
         System.out.println("The matrix you input is:");
@@ -25,8 +33,14 @@ public class UserInput{
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
-            System.out.println();
         }
+        System.out.println();
         return matrix;
+    }
+
+    public String inputHeight(String text){
+        System.out.println(text);
+        String colLength = scanner.nextLine();
+        return colLength;
     }
 }
